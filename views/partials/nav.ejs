@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark gap-2 m-0 px-1 pe-2 py-1">
   <a class="navbar-brand fs-6 fw-bold text-info m-0 p-0" href="/">
-    <img  src="/img/logo.png" width="35px" class="m-0 p-0">
+    <img  src="/img/logo.png" width="30px" class="m-0 p-0">
     EasyLearn
   </a>
   <% if (lessons && lessons.length> 0) { %>
@@ -27,14 +27,14 @@
       </select>
     </form>
   <% }  %>
-  <button class="navbar-toggler bg-secondary-dark" type="button" data-bs-toggle="collapse"
+  <button class="navbar-toggler bg-secondary-dark m-0 p-0 px-1 my-1" type="button" data-bs-toggle="collapse"
     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbarNav" class="collapse navbar-collapse"> 
     <% if (!user) { %>
       <ul 
-        class="ms-auto d-flex justify-content-end align-items-center gap-2 p-0 m-0 mt-sm-0"
+        class="ms-sm-auto d-flex align-items-center gap-2 p-0 m-0 ms-2 mb-1 mb-sm-0"
         style="margin-top:-2px !important;" 
       >
         <a href="/register" class="badge bg-info text-dark text-decoration-none">
@@ -55,7 +55,10 @@
           <% } %>
       </ul>
     <% } else { %>
-      <ul class="ms-auto d-flex justify-content-end align-items-center gap-2 p-0 m-0 mt-sm-0" style="margin-top:-2px !important;">
+      <ul 
+        class="ms-sm-auto d-flex align-items-center gap-2 p-0 m-0 ms-2 mb-sm-0" 
+        style="margin-top:-2px !important;"
+      >
         <% if (!user) { %>
           <a href="/register" class="badge bg-info text-dark text-decoration-none">Sign-up</a>
           <a href="/login" class="badge bg-info text-dark text-decoration-none">Login</a>

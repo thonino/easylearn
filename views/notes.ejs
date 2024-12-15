@@ -39,15 +39,15 @@
               </button>
             </form>
           </div>
-          <!-- Search -->
+          <!-- Search  style="width: 140px" -->
           <div class="d-flex justify-content-center gap-2 mt-2 showleft">
             <form method="GET" name="search" action="/notes" class="d-flex">
               <input 
                 type="text" 
                 name="search" 
-                class="form-control shadow-top "
-                style="width: 160px" 
+                class="form-control"
                 placeholder="<%= search ? search : 'search...' %>" 
+
               />
               <button type="submit" class="btn bg-info-light text-dark shadow ms-2"> 
                 <i class="bi bi-search "></i>
@@ -58,8 +58,8 @@
                 <select 
                   id="categoryFilter" 
                   name="categoryFilter" 
-                  class="form-select form-design text-capitalize bg-info-light text-dark shadow " 
-                  style="width: 160px" 
+                  class="form-select form-design text-capitalize bg-info-light text-dark shadow" 
+                  style="width: 140px"
                   onchange="this.form.submit()"
                 >
                   <option hidden>Category</option>
@@ -95,7 +95,7 @@
               </button>
             </th>
             <!-- Colonne Option avec bouton pour Show/masquer Edit/Delete -->
-            <th class='bg-secondary text-light   m-0 p-0'>
+            <th class='bg-secondary text-light m-0 p-0'>
               <button id="toggle2" class="btn text-light">
                 <i class="bi bi-gear-fill ms-1"> Option</i>
               </button>
@@ -106,7 +106,7 @@
           <% notes.forEach((note, index)=> { %>
             <tr class="text-center">
               <!-- Colonne A -->
-              <td class="fw-light caseA align-middle ">
+              <td class="fw-light caseA align-middle p-0 py-1">
                 <span 
                   id="caseAContent<%= index %>" 
                   class="text-capitalize"
@@ -122,7 +122,7 @@
                 </button>
               </td>
               <!-- Colonne B -->
-              <td class="fw-bold text-info-dark caseB align-middle">
+              <td class="fw-bold text-info-dark caseB align-middle p-0 py-1">
                 <span 
                   id="caseBContent<%= index %>" 
                   class="text-capitalize"
@@ -138,7 +138,7 @@
                 </button>
               </td>
               <!-- Colonne Option avec catégorie, exemple, Edit et Delete -->
-              <td class="optionCase align-middle">
+              <td class="optionCase align-middle p-0 py-1">
                 <!-- Si une catégorie ou un exemple est présent -->
                 <% if (note.example) { %>
                   <span class=" text-capitalize">
