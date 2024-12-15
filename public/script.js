@@ -139,20 +139,19 @@ ScrollReveal().reveal('.showbottom', {
 
 // Initialiser ScrollReveal top
 ScrollReveal().reveal('.showtop', { 
-  distance: '100px',
-  duration: 1000,
+  distance: '50px',
+  duration: 300,
   origin: 'top',
   easing: 'ease-in-out',
   interval: 100,
 });
 
 // Initialiser ScrollReveal top
-ScrollReveal().reveal('.showtopspeed', { 
-  distance: '250px',
-  duration: 500,
+ScrollReveal().reveal('.showtopspeed', {
+  distance: '75px', 
+  duration: 300,
   origin: 'top',
-  easing: 'ease-in-out',
-  interval: 50,
+  interval: 30
 });
 // Initialiser ScrollReveal top
 ScrollReveal().reveal('.showleftspeed', { 
@@ -162,6 +161,7 @@ ScrollReveal().reveal('.showleftspeed', {
   easing: 'ease-in-out',
   interval: 50,
 });
+
 
 // Initialiser ScrollReveal top
 ScrollReveal().reveal('.showtopslow', { 

@@ -15,74 +15,81 @@
         <i class="bi bi-box-arrow-in-right btn btn-success">Login</i>
       </a>
     <% } else { %>
-      <h1 class="text-center  text-secondary pt-2"> Review ! </h1>
+      <h1 class="text-center text-info-dark pt-2"> Review ! </h1>
       <% if (tenQuizzes && tenQuizzes.length > 0  ) { %>
         <div 
-          class="card ft-roboto text-secondary fst-italic m-0 bg-success-light p-2 mb-3 mt-3"
+          class="card ft-roboto fst-italic m-0 bg-secondary-dark showtopslow p-2 my-2"
         >
-          <p class="fs-4 fw-bold m-0 p-0 showleft">
+          <p class="fs-4 fw-bold text-info m-0 p-0">
             Last quizzes
           </p>
-            <p class="fs-4 fw-light m-0 p-0 showleft">
+            <p class="fs-4 fw-bold text-info m-0 p-0">
               Average : 
-            <span class="fw-light text-success ">
+            <span class="fw-light text-info-light ">
               <%= average %> / 6
             </span>
           </p>
         </div>
-        <div class="card mb-3 rounded-0">
-          <div 
-            class="card-header d-flex justify-content-center align-items-center bg-success-dark rounded-0 m-0 p-0"
-            >
-            <p class="text-white fs-4 m-0 p-0 showleft">
+        <div class="card mb-4 shadow rounded-3 col-10">
+          <div class="card-header bg-secondary-dark text-center rounded-top-3 m-0 p-0">
+            <p class="fs-3 fw-bold text-info m-0 p-0">
               Quiz
             </p>
-            <div class="showright">
-              <% if (skip > 0) { %> 
-                <a 
-                  href="/review?prev=true&skip=<%= skip %>" 
-                  class="text-decoration-none text-white"
-                >
-                  <i class="bi bi-chevron-left fs-4 ms-2 ms-2"></i>
-                </a>
-              <% } else { %>
-                <i class="bi bi-chevron-left text-success fs-4 ms-2"></i>
-              <% } %>
-              <% if (skip < totalQuizzes - 1) { %>
-                <a 
-                  href="/review?next=true&skip=<%= skip %>" 
-                  class="text-decoration-none text-white"
-                >
-                  <i class="bi bi-chevron-right fs-4"></i>
-                </a>
-              <% } else { %>
-                <i class="bi bi-chevron-right text-success fs-4"></i>
-              <% } %>
-            </div>
           </div>
+          <!-- card -->
           <div class="card pt-0 px-4 rounded-0">
             <div class="row text-capitalize">
               <% if (showQuiz) { %>
-                <div class="d-flex fs-2 flex-sm-row">
-                  <div class="<%= color %>-dark col fw-bold showleft">
-                    Scores :
-                    <span class="">
-                      <%= showQuiz.score %> / 6
-                    </span>
+                <div class="d-flex align-items-center justify-content-between fs-2 flex-sm-row">
+                  <!-- btn left -->
+                  <div class="showleft ms-3">
+                    <% if (skip > 0) { %> 
+                      <a 
+                        href="/review?prev=true&skip=<%= skip %>" 
+                        class="text-decoration-none text-info-dark"
+                      >
+                        <i class="bi bi-chevron-left fs-1 ms-2 ms-2"></i>
+                      </a>
+                    <% } else { %>
+                      <i class="bi bi-chevron-left text-secondary-light fs-1 ms-2"></i>
+                    <% } %>
+                  </div>
+                  <div>
+                    <!-- scores -->
+                    <div class="<%= color %>-dark fw-light">
+                      Scores :
+                      <span class="">
+                        <%= showQuiz.score %> / 6
+                      </span>
+                    </div>
+                    <!-- prise -->
+                    <div>
+                      <p class="fs-2 fst-italic fw-bold <%= color %>">
+                        <%= prize %>
+                      </p>
+                    </div>
+                  </div>
+                  <!-- btn right -->
+                  <div class="showright me-4">
+                    <% if (skip < totalQuizzes - 1) { %>
+                      <a 
+                        href="/review?next=true&skip=<%= skip %>" 
+                        class="text-decoration-none text-info-dark"
+                      >
+                        <i class="bi bi-chevron-right fs-1"></i>
+                      </a>
+                    <% } else { %>
+                      <i class="bi bi-chevron-right text-secondary-light fs-1"></i>
+                    <% } %>
                   </div>
                 </div>
               <% } %>
-              <p 
-                class="fs-2 fst-italic fw-bold my-2 showright <%= color %>"
-              >
-                <%= prize %>
-              </p>
               <% if (showQuiz && showQuiz.data) {%>
-                <% showQuiz.data.forEach(data => { console.log("/review showQuizz data : ", data[2])%>
-                  <div class="col-md-4 mb-3">
-                    <div class="card rounded-0 showtopspeed" onmouseenter="handleMouseEnter(event)">
+                <% showQuiz.data.forEach(data => { %>
+                  <div class="col-sm-4 mb-3 px-1">
+                    <div class="card rounded shadow showtopslow" onmouseenter="handleMouseEnter(event)">
                       <div 
-                        class="card-header text-white rounded-0 text-capitalize <%= data[2] ? 'bg-danger-dark' : 'bg-success' %>"
+                        class="card-header fw-bol text-white rounded-top text-capitalize <%= data[2] ? 'bg-danger-dark' : 'bg-success' %>"
                       >
                       <%= data[0] %>
                     </div>
@@ -104,24 +111,24 @@
               <% } %>
             </div>
           </div>
-          <div class="card-footer bg-success-light rounded-0">
+          <div class="card-footer bg-secondary-dark rounded-bottom-3">
             <% if (showQuiz) { %>
               <div class="d-flex flex-column flex-sm-row">
-                <div class="col fw-bold showleft" onmouseenter="handleMouseEnter(event)">
+                <div class="col fw-bold text-info showleft">
                   Scores : 
-                  <span class="text-success-dark text-capitalize">
+                  <span class="text-info-light text-capitalize">
                     <%= showQuiz.score %> / 6  
                   </span>
                 </div>
-                <div class="col fw-bold showleft" onmouseenter="handleMouseEnter(event)">
+                <div class="col fw-bold text-info showleft">
                   lesson : 
-                  <span class="text-success-dark text-capitalize">
+                  <span class="text-info-light text-capitalize">
                     <%= showQuiz.lessonName %>
                   </span>
                 </div>
-                <div class="col fw-bold showleft" onmouseenter="handleMouseEnter(event)">
+                <div class="col fw-bold text-info showleft">
                   Category : 
-                  <span class="text-success-dark text-capitalize text-low">
+                  <span class="text-info-light text-capitalize text-low">
                     <%= showQuiz.categoryName %>
                   </span>
                 </div>
@@ -136,26 +143,28 @@
         </div>
       <% } %>
       <% if (tenQuizzes && tenQuizzes.length > 0) { %>
-        <table class="table table-bordered bg-9">
-          <thead  class="">
-            <tr  class=""></tr>
-              <th scope="col">id</th>
-              <th scope="col">Lesson</th>
-              <th scope="col">Category</th>
-              <th scope="col">Score</th>
-            </tr>
-          </thead>
-          <tbody >
-            <% tenQuizzes.forEach((quiz, index) => { %>
+        <div class="col-10 mb-5">
+          <table class="table table-bordered shadow table-striped table-sm">
+            <thead>
               <tr>
-                <th scope="row" class="showtopspeed"><%= index + 1 %></th>
-                <td class="showtopspeed"><%= quiz.lessonName %></td>
-                <td class="showtopspeed"><%= quiz.categoryName %></td>
-                <td class="showtopspeed"><%= quiz.score %></td>
+                <th scope="col"><span class="showtopspeed">ID</span></th>
+                <th scope="col"><span class="showtopspeed">Lesson</span></th>
+                <th scope="col"><span class="showtopspeed">Category</span></th>
+                <th scope="col"><span class="showtopspeed">Score</span></th>
               </tr>
-            <% }); %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% tenQuizzes.forEach((quiz, index) => { %>
+                <tr>
+                  <th scope="row"><span class="showtopspeed"><%= index + 1 %></span></th>
+                  <td><span class="showtopspeed"><%= quiz.lessonName %></span></td>
+                  <td><span class="showtopspeed"><%= quiz.categoryName %></span></td>
+                  <td><span class="showtopspeed"><%= quiz.score %></span></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>   
+        </div>
       <% } %>
     <% } %>
   </div>

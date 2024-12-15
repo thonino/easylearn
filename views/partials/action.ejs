@@ -5,7 +5,7 @@
       <% if (selectedLesson && notesFull.length > 0) { %>
       <a 
         href="/notes" 
-        class="btn btn-primary btn-sm shadow <%= currentPath === '/notes' ? 'active text-light' : 'text-primary-light' %>"
+        class="btn btn-primary btn-sm fw-bold text-light shadow <%= currentPath === '/notes' ? 'active' : '' %>"
       >
         <i class="bi bi-book-fill d-sm-inline d-none" ></i> Learn 
       </a>
@@ -17,7 +17,7 @@
       <% if (notesFull && notesFull.length > 5) { %>
       <a 
         href="/test" 
-        class="btn btn-primary btn-sm shadow <%= currentPath === '/test' ? 'active text-light' : 'text-primary-light' %>"
+        class="btn btn-primary btn-sm fw-bold text-light shadow <%= currentPath === '/test' ? 'active' : '' %>"
       >
         <i class="bi bi-controller d-sm-inline d-none"></i> Test 
       </a>
@@ -29,7 +29,7 @@
       <% if (tenQuizzes && tenQuizzes.length > 0) { %>
       <a 
         href="/review" 
-        class="btn btn-primary btn-sm shadow <%= currentPath === '/review' ? 'active text-light' : 'text-primary-light' %>"
+        class="btn btn-primary btn-sm fw-bold text-light shadow <%= currentPath === '/review' ? 'active' : '' %>"
       >
         <i class="bi bi-file-earmark-check d-sm-inline d-none"></i> Review 
       </a>
@@ -41,11 +41,11 @@
     </div>
     <!-- Groupe 2-->
     <div class="btn-group " role="group" aria-label="Navigation - Modals">
-      <button class="btn btn-success btn-sm text-success-light shadow" data-bs-toggle="modal" data-bs-target="#lessonModal">
+      <button class="btn btn-success btn-sm fw-bold text-light shadow" data-bs-toggle="modal" data-bs-target="#lessonModal">
         <i class="bi bi-plus-lg"></i> Lesson
       </button>
       <% if (user && lessons && selectedLesson) { %>
-      <button class="btn btn-success btn-sm text-success-light shadow" data-bs-toggle="modal" data-bs-target="#noteModal">
+      <button class="btn btn-success btn-sm fw-bold text-light shadow" data-bs-toggle="modal" data-bs-target="#noteModal">
         <i class="bi bi-plus-lg"></i> Note
       </button>
       <% } else { %>
@@ -54,7 +54,6 @@
       </span>
       <% } %>
     </div>
-
   </nav>
   
   
