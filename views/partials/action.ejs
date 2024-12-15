@@ -1,91 +1,59 @@
 <% if (user) { %>
-  <nav class="bg-white">
-    <p class="text-center ft-victoria fs-2 fw-light text-light pt-2 m-0"> </p>
-    <ul class="navbar-nav">
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="pt-2 d-flex justify-content-center gap-3">
-                <% if (selectedLesson && notesFull.length > 0) { %>
-                <div class="bg-warning-dark showleftspeed rounded-2" onmouseenter="handleMouseEnter(event)">
-                    <a href="/notes" class="btn btn-lg text-white d-flex flex-column fs-6 m-0 p-2">
-                        <i class="bi bi-book-fill text-light"></i>
-                        Learn
-                    </a>
-                </div>
-                <% } else { %>
-                <div class="showleftspeed">
-                    <span class="btn btn-lg text-secondary d-flex flex-column cursor-default fs-6 m-0 p-2 ">
-                        <i class="bi bi-book-fill"></i>
-                        Learn
-                    </span>
-                </div>
-                <% } %>
-                <div class="bg-info-dark rounded-2 fs-6 showleftspeed" onmouseenter="handleMouseEnter(event)">
-                    <button class="btn btn-lg text-white d-flex flex-column fs-6 m-0 p-2 " data-bs-toggle="modal" data-bs-target="#lessonModal">
-                        <i class="bi bi-plus-lg text-white"></i>
-                        Lesson
-                    </button>
-                </div>
-                <% if (user && lessons && selectedLesson) { %>
-                <div class="bg-success-dark rounded-2 showleftspeed" onmouseenter="handleMouseEnter(event)">
-                    <button 
-                      class="btn btn-lg text-white d-flex flex-column fs-6 m-0 p-2" 
-                      data-bs-toggle="modal" 
-                      data-bs-target="#noteModal"
-                    >
-                      <i class="bi bi-plus-lg"></i>
-                        Note
-                    </button>
-                </div>
-                <% } else { %>
-                <div class="rounded-2 showleftspeed">
-                    <span class="btn btn-lg text-secondary d-flex flex-column cursor-default fs-6 m-0 p-2">
-                        <i class="bi bi-pencil-fill"></i>
-                        Note
-                    </span>
-                </div>
-                <% } %>
-                <% if (notesFull && notesFull.length > 5) { %>
-                <div class="bg-primary-dark rounded-2 showleftspeed" onmouseenter="handleMouseEnter(event)">
-                  <a 
-                    href="/test" 
-                    class="btn btn-lg text-white d-flex flex-column fs-6 m-0 p-2"
-                    >
-                      <i class="bi bi-controller"></i>
-                      Test
-                  </a>
-                </div>
-                <% } else { %>
-                <div class="rounded-2 showleftspeed">
-                  <span class="btn btn-lg text-secondary d-flex flex-column cursor-default fs-6 m-0 p-2">
-                    <i class="bi bi-controller"></i>
-                    Test
-                  </span>
-                </div>
-                <% } %>
-                <% if (tenQuizzes && tenQuizzes.length > 0) { %>
-                  <div class="bg-secondary rounded-2 showleftspeed" onmouseenter="handleMouseEnter(event)">
-                      <a 
-                        href="/review" 
-                        class="btn btn-lg text-primary-light d-flex flex-column fs-6 m-0 p-2 "
-                        >
-                          <i class="bi bi-file-earmark-check"></i>
-                          Review
-                      </a>
-                  </div>
-                  <% } else { %>
-                  <div class=" rounded-2 showleftspeed">
-                      <span class="btn btn-lg text-secondary d-flex flex-column cursor-default fs-6 m-0 p-2">
-                        <i class="bi bi-file-earmark-check"></i>
-                        Review
-                      </span>
-                  </div>
-                <% } %>
-            </div>
-        </div>
-    </ul>
-    <div class="pb-3"></div>
-</nav>
+  <nav class="bg-white p-2 text-center ">
+      <!-- Groupe 1-->
+    <div class="btn-group" role="group" aria-label="Navigation - Pages">
+      <% if (selectedLesson && notesFull.length > 0) { %>
+      <a href="/notes" class="btn btn-primary shadow <%= currentPath === '/notes' ? 'active text-primary-light' : '' %>">
+        <i class="bi bi-book-fill"></i> Learn
+      </a>
+      <% } else { %>
+      <span class="btn bg-secondary-light text-secondary cursor-default ">
+        <i class="bi bi-book-fill"></i> Learn
+      </span>
+      <% } %>
+  
+      <% if (notesFull && notesFull.length > 5) { %>
+      <a href="/test" class="btn btn-primary shadow <%= currentPath === '/test' ? 'active text-primary-light' : '' %>">
+        <i class="bi bi-controller"></i> Test
+      </a>
+      <% } else { %>
+      <span class="btn bg-secondary-light text-secondary cursor-default ">
+        <i class="bi bi-controller"></i> Test
+      </span>
+      <% } %>
+  
+      <% if (tenQuizzes && tenQuizzes.length > 0) { %>
+      <a href="/review" class="btn btn-primary shadow <%= currentPath === '/review' ? 'active text-primary-light' : '' %>">
+        <i class="bi bi-file-earmark-check"></i> Review
+      </a>
+      <% } else { %>
+      <span class="btn bg-secondary-light text-secondary cursor-default ">
+        <i class="bi bi-file-earmark-check"></i> Review
+      </span>
+      <% } %>
+    </div>
+  
+    <!-- Groupe 2-->
+    <div class="btn-group " role="group" aria-label="Navigation - Modals">
+      <button class="btn btn-success shadow" data-bs-toggle="modal" data-bs-target="#lessonModal">
+        <i class="bi bi-plus-lg"></i> Lesson
+      </button>
 
+      <% if (user && lessons && selectedLesson) { %>
+      <button class="btn btn-success text-light shadow" data-bs-toggle="modal" data-bs-target="#noteModal">
+        <i class="bi bi-plus-lg"></i> Note
+      </button>
+      <% } else { %>
+      <span class="btn bg-secondary-light text-secondary  cursor-default">
+        <i class="bi bi-pencil-fill"></i> Note
+      </span>
+      <% } %>
+    </div>
+  
+  </nav>
+  
+  
+  
 <% } %>  
 <% if (user ) { %>
   <!-- Lesson Modal -->
@@ -94,7 +62,7 @@
         <div class="modal-content p-0 m-0">
           <i class="bi bi-plus-lg text-center text-info-dark fs-1"></i>
           <div class="modal-header text-info-dark  fs-4 p-0 ms-3">
-            <p class="modal-title ft-victoria">New Lesson</p>
+            <p class="modal-title ">New Lesson</p>
             <button 
               class="btn-close me-2 showright" 
               type="button" 
@@ -130,7 +98,7 @@
       <div class="modal-content">
         <i class="bi bi-plus-lg text-center text-success-dark fs-1"></i>
         <div class="modal-header text-success-dark fs-4 p-0 ms-3">
-          <p class="modal-title ft-victoria">New Note</p>
+          <p class="modal-title ">New Note</p>
           <button 
             class="btn-close me-2" 
             type="button" 
@@ -222,4 +190,5 @@
     noteModal.show();
   }
 </script>
+
 

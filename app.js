@@ -99,29 +99,37 @@ const makeAvailable = async (req, res, next) => {
 
 app.use(makeAvailable);
 
-//------- Decommenter avant d'envoyer sur git -------//
-
-const https = require('https');
-
-function keepAlive() {
-  setInterval(() => {
-    https.get('https://easylearn-04vk.onrender.com/health', (res) => { 
-      res.on('data', () => {});
-      res.on('end', () => console.log('test ping successful.'));
-    }).on('error', (err) => {
-      console.log('test ping failed: ' + err.message);
-    });
-  }, 873737); // Intervalle de 14 minutes et 33 secondes
-}
-
-keepAlive();
-
-// Endpoint de vérification pour keepAlive
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
+// Current page
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path; 
+  next();
 });
 
+//------- For Render : Decommenter avant d'envoyer sur git -------//
+
+// const https = require('https');
+
+// function keepAlive() {
+//   setInterval(() => {
+//     https.get('https://easylearn-04vk.onrender.com/health', (res) => { 
+//       res.on('data', () => {});
+//       res.on('end', () => console.log('test ping successful.'));
+//     }).on('error', (err) => {
+//       console.log('test ping failed: ' + err.message);
+//     });
+//   }, 873737); // Intervalle de 14 minutes et 33 secondes
+// }
+
+// keepAlive();
+
+// // Endpoint de vérification pour keepAlive
+// app.get('/health', (req, res) => {
+//   res.status(200).send('OK');
+// });
+
 //---------------------------------ROOTS---------------------------------//
+
+
 
 // Session selected lesson
 app.post('/selectLesson', (req, res) => {
@@ -373,6 +381,7 @@ app.get("/notes", async (req, res) => {
       lessons: res.locals.lessons,
       notes: paginatedNotes,
       currentPage: page,
+      currentPath: '/notes',
       notesFull, filter, search, quizzes, totalPages, limit
     });
   } catch (err) {
@@ -411,6 +420,7 @@ app.post("/notes", async (req, res) => {
       lessons: res.locals.lessons,
       notes: paginatedNotes,
       currentPage: page,
+      currentPath: '/notes',
       notesFull, filter, search, quizzes, totalPages, limit
     });
   } catch (err) {
@@ -579,6 +589,7 @@ app.get("/test", async (req, res) => {
       notes: res.locals.notes,
       categories: categoriesFilter,
       selectedLesson: selectedLesson,
+      currentPath: '/test',
     });
   } catch (err) {
     console.error("Error rendering quiz:", err);
@@ -717,6 +728,7 @@ app.get("/review", async (req, res) => {
     res.render("review", {
       user: res.locals.user,
       notes: res.locals.notes, 
+      currentPath: '/review',
       showQuiz, prize, color, tenQuizzes, skip, 
       totalQuizzes: tenQuizzes.length, average,
     });

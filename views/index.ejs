@@ -9,120 +9,111 @@
     <%- include('./partials/tips') %>
     <%- include('./partials/action') %>
     <div class="row-6 d-flex flex-column align-items-center mb-3">
-      <div class="vw-100  bg-white wrapper pb-3 m-0 p-0">
-        <h1 class="text-center ft-victoria text-secondary py-2">EasyLearn</h1>
-        <p 
-          class="fs-4 ft-victoria text-center text-success fst-italic m-0 mt-3 showright" 
-        >
-          To learn words by heart
-        </p>
+      <div class="vw-100  bg-white wrapper py-3 m-0 p-0">
+        <h1 class="fw-bold text-info text-center ">EasyLearn</h1>
         <div class="d-flex flex-wrap justify-content-center">
-          <div class="container m-0 p-0" style="width:472px;">
-            <div class="card border-0 board showtop">
-              <img src="/img/board.png" class="card-img" alt="image de tableau">
-              <div class="card-img-overlay d-flex flex-column align-items-center">
-                <div id="about" class="content">
-                  <p 
-                    class="card-title ft-victoria fs-2 text-success text-center mt-90"
-                  >
-                    About
-                  </p>
-                  <p 
-                    class="card-text fs-5 ft-victoria text-secondary text-center mt-2 px-3" 
-                    style="height: 130px;"
-                  >
-                      It's an app for anyone who wants to learn words or definitions by heart. 
-                      Very easy to use and completely free.
-                  </p>
-                </div>
-                <div id="simply" class="content hidden">
-                  <p 
-                    class="card-title ft-victoria fs-2 text-success text-center mt-90"
-                  >
-                    Simply
-                  </p>
-                  <p 
-                    class="card-text fs-5 ft-victoria text-secondary text-center mt-2 px-3" 
-                    style="height: 130px;"
-                  >
-                      Create a lesson, add notes, after 6 notes added start yours test. 
-                      Let yourself be guided by the fantastic Tips feature.
-                  </p>
-                </div>
-                <div id="free" class="content hidden">
-                  <p 
-                    class="card-title ft-victoria fs-2 text-success text-center mt-90"
-                  >
-                    Free app
-                  </p>
-                  <p 
-                    class="card-text fs-5 ft-victoria text-secondary mt-2 px-3" 
-                    style="height: 130px;"
-                  >
-                    <span class="text-center">Create an account <br>Sign in <br>Let yourself be guided!</span>
-                  </p>
-                </div>
-                <div class="ft-roboto fs-2 ">
-                  <button 
-                    id="btn-about" 
-                    class="btn btn-sm fs-4 text-success fw-light underline"
-                    onmouseenter="handleMouseEnter(event)"
-                  >
-                    About
-                  </button>
-                  <button 
-                    id="btn-simply" 
-                    class="btn btn-sm fs-4 text-success fw-light underline"
-                    onmouseenter="handleMouseEnter(event)"
-                  >
-                      Simply
-                  </button>
-                  <button 
-                    id="btn-free" 
-                    class="btn btn-sm fs-4 text-success fw-light underline"
-                    onmouseenter="handleMouseEnter(event)"
-                  >
-                    Free
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex justify-content-center flex-column showbottom"style="width:520px;">
-            <p 
-              class="fs-2 fw-bold ft-victoria text-center text-success fst-italic " 
+              <!-- First element -->
+              <div 
+              class="d-flex justify-content-center flex-column" 
+              style="width:520px;"
             >
-              Learn and test yourself
-            </p>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="d-flex justify-content-center ">
-                <img src="/img/design1.png" 
-                  class="img-fluid " 
-                  onmouseenter="handleMouseEnter(event)"
-                >
-              </div>
-              <div class="d-flex flex-wrap justify-content-center me-1" style="width:400px;">
-                <img 
-                  src="/img/face1.png" class="img-fluid w-50 h-50" 
-                  onmouseenter="handleMouseEnter(event)"
-                >
-                <img 
-                  src="/img/face2.png" class="img-fluid w-50 h-50" 
-                  onmouseenter="handleMouseEnter(event)"
-                >
-                <img 
-                  src="/img/example.png" class="img-fluid w-50 h-50" 
-                  onmouseenter="handleMouseEnter(event)"
-                >
+              <h2 class="fs-2 fw-light fst-italic text-center text-info-dark mb-3 showright">
+                Learn and test yourself
+              </h2>
+              <div class="d-flex justify-content-center align-items-cente">
+                <div class="d-flex justify-content-center ">
+                  <img src="/img/design1.png" 
+                    class="img-fluid " 
+                    onmouseenter="handleMouseEnter(event)"
+                  >
+                </div>
+                <div class="d-flex flex-wrap justify-content-center me-1" style="width:400px;">
+                  <img 
+                    src="/img/face1.png" class="img-fluid w-50 h-50" 
+                    onmouseenter="handleMouseEnter(event)"
+                  >
+                  <img 
+                    src="/img/face2.png" class="img-fluid w-50 h-50" 
+                    onmouseenter="handleMouseEnter(event)"
+                  >
+                  <img 
+                    src="/img/example.png" class="img-fluid w-50 h-50" 
+                    onmouseenter="handleMouseEnter(event)"
+                  >
+                </div>
               </div>
             </div>
           </div>
+          <!-- Second element  -->
+          <div id="accordionExample" class="accordion container my-3" >
+            <div class="accordion-item shadow">
+              <h2 class="accordion-header">
+                <button 
+                  class="accordion-button" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#collapseOne" 
+                  aria-expanded="true" 
+                  aria-controls="collapseOne"
+                >
+                  <span class="fs-2 fw-light text-info-dark text-center w-100">About</span>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <p class="accordion-body fs-4 fst-italic text-center text-info-dark">
+                  It's an app for anyone who wants to learn words or definitions by heart. 
+                  Very easy to use and completely free.                
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item  shadow">
+              <h2 class="accordion-header">
+                <button 
+                  class="accordion-button collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#collapseTwo" 
+                  aria-expanded="false" 
+                  aria-controls="collapseTwo"
+                >
+                  <span class="fs-2 fw-light text-info-dark text-center w-100">Simply</span>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <p class="accordion-body fs-4 fst-italic text-center text-info-dark">
+                  Create a lesson, add notes, after 6 notes added start yours test. 
+                  Let yourself be guided by the fantastic Tips feature.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item shadow">
+              <h2 class="accordion-header">
+                <button 
+                  class="accordion-button collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#collapseThree" 
+                  aria-expanded="false" 
+                  aria-controls="collapseThree"
+                >
+                  <span class="fs-2 fw-light text-info-dark text-center w-100 text-center">Free App</span>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <p class="accordion-body fs-4 fst-italic text-center text-info-dark">
+                  Create an account Sign in Let yourself be guided!
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- who -->
+        <h2 class="fs-2 fw-light fst-italic text-center text-info-dark my-3 showright">
+          Who needs the app ?
+        </h2>
+        <div class="container d-flex justify-content-center">
+          <%- include('./partials/carousel') %>
         </div>
       </div>
-      <p class="fs-2 text-center ft-victoria text-success pt-3 showleft">
-        Who needs the app ?
-      </p>
-      <%- include('./partials/carousel') %>
     </div>
     <%- include('./partials/footer') %>
     <script>
