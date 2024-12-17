@@ -1,3 +1,29 @@
+// Targeting
+let toastEl = document.querySelector(".toast");
+toastEl.style.width = "340px";
+
+// Add options
+let toastOptions = { autohide: true, delay: 10000 };
+
+// Create and show bootstrap Element
+let toast = new bootstrap.Toast(toastEl, toastOptions);
+setTimeout(() => { 
+  toast.show(); 
+}, 1500);
+
+let checkTarget = document.getElementById("flexSwitchCheckChecked");
+checkTarget.addEventListener("change", () => {
+  let form = document.getElementById("tipsForm");
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+  })
+  .then(response => {
+    if (response.ok) { console.log("Form submitted successfully!"); } 
+    else { console.error("Error submitting form"); }
+  });
+});
+
 // Tips toggle submit
 const closeButtons = document.querySelectorAll('.btn-close');
 closeButtons.forEach(button => {

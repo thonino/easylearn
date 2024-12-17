@@ -135,21 +135,32 @@ app.use((req, res, next) => {
 app.post('/selectLesson', (req, res) => {
   const selectedLesson = req.body.lesson;
   if (req.session.lessons && req.session.lessons.length > 0) {
-    req.session.lessons = req.session.lessons.map(lesson => ({ // Reset the other lesson selected
+    req.session.lessons = req.session.lessons.map(lesson => ({ 
       ...lesson, selected: lesson.name === selectedLesson
     }));
   }
-  req.session.selectedLesson = selectedLesson; // New lesson selected
+  req.session.selectedLesson = selectedLesson; 
   res.redirect(`/notes`); 
 });
+
+// Tips
+// app.post('/tips', (req, res) => {
+//   let tips = req.body.status;
+//   if (!tips || tips !== "d-none") { tips = ""; } 
+//   else { tips = "d-none"; }
+//   req.session.tips = tips;
+//   const referer = req.get('Referer');
+//   res.redirect(referer);
+// });
+
 app.post('/tips', (req, res) => {
-  let tips = req.body.status;
-  if (!tips || tips !== "d-none") { tips = ""; } 
-  else { tips = "d-none"; }
+  const tips = req.body.flexSwitchCheckChecked; 
   req.session.tips = tips;
-  const referer = req.get('Referer');
-  res.redirect(referer);
+  console.log(`Tips status: ${tips}`);
+  res.sendStatus(200); 
 });
+
+
 
 // INDEX
 app.get("/", async (req, res) => {
@@ -355,6 +366,7 @@ const lessonData = new Lesson({
 // GET NOTES
 app.get("/notes", async (req, res) => {
   try {
+    if(!res.locals.user){return res.redirect('/login');}
     let notes = res.locals.notes || [];
     let notesFull = res.locals.notesFull;
     const filter = req.query.categoryFilter; 
@@ -393,6 +405,7 @@ app.get("/notes", async (req, res) => {
 // POST NOTES
 app.post("/notes", async (req, res) => {
   try {
+    if(!res.locals.user){return res.redirect('/login');}
     const quizzes = res.locals.quiz;
     let notes = res.locals.notes || [];
     const filter = req.body.categoryFilter;

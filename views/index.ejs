@@ -108,8 +108,8 @@
           Who needs the app ?
         </h2>
         <div class="d-flex justify-content-center flex-wrap gap-3">
-          <div class="card" style="width: 350px;">
-            <img src="/img/1.png" alt="" class="card-img-top shadow">
+          <div class="card shadow" style="width: 320px;">
+            <img src="/img/1.png" alt="" class="card-img-top">
             <div class="card-body">
               <h3 class="ft-roboto fw-bold text-center text-info ">Teachers</h3>
               <p class="ft-roboto fst-italic text-center text-info-dark">
@@ -117,8 +117,8 @@
               </p>
             </div>
           </div>
-          <div class="card" style="width: 350px;">
-            <img src="/img/2.png" alt="" class="card-img-top shadow">
+          <div class="card shadow" style="width: 320px;">
+            <img src="/img/2.png" alt="" class="card-img-top">
             <div class="card-body">
               <h3 class="ft-roboto fw-bold text-center text-info ">Kids</h3>
               <p class="ft-roboto fst-italic text-center text-info-dark">
@@ -126,8 +126,8 @@
               </p>
             </div>
           </div>
-          <div class="card" style="width: 350px;">
-            <img src="/img/3.png" alt="" class="card-img-top shadow">
+          <div class="card shadow" style="width: 320px;">
+            <img src="/img/3.png" alt="" class="card-img-top">
             <div class="card-body">
               <h3 class="ft-roboto fw-bold text-center text-info ">Students</h3>
               <p class="ft-roboto fst-italic text-center text-info-dark">
@@ -135,8 +135,8 @@
               </p>
             </div>
           </div>
-          <div class="card" style="width: 350px;">
-            <img src="/img/4.png" alt="" class="card-img-top shadow">
+          <div class="card shadow" style="width: 320px;">
+            <img src="/img/4.png" alt="" class="card-img-top">
             <div class="card-body">
               <h3 class="ft-roboto fw-bold text-center text-info ">Teachers</h3>
               <p class="ft-roboto fst-italic text-center text-info-dark">
@@ -148,15 +148,5 @@
       </div>
     </div>
     <%- include('./partials/footer') %>
-    <script>
-        document.getElementById('btn-about').addEventListener('click', function () { showContent('about');});
-        document.getElementById('btn-simply').addEventListener('click', function () { showContent('simply');});
-        document.getElementById('btn-free').addEventListener('click', function () { showContent('free'); });
-        function showContent(id) {
-          document.querySelectorAll('.content').forEach(function (content){ content.classList.add('hidden');});
-          document.getElementById(id).classList.remove('hidden');
-        }
-    </script>
-    <script src="/script.js"></script>
   </body>
 </html>
