@@ -1,29 +1,59 @@
-<nav class="bg-secondary-dark <%= tips %>">
-  <div class="d-flex  flex-wrap m-0 p-0" style="height: 30px;" >
-      <!-- Block 1 (Center) -->
-    <div
-      class="d-flex mx-auto text-white fst-italic gap-2"
-      style="margin-top:2px"
-    >
-      <p class="text-warning">Tips :</p>
-      <div>
-        <% if (!user) { %>
-          <p class="showright250"> <!-- stape 1 -->
-            Please
-            <a href="/login" class="text-success fw-bold text-decoration-none"> 
-              Log-in
-            </a>
+<nav class="<%= tips %>">
+  <!-- Block 1 show Tips -->
+  <div>
+    <% if (!user) { %>
+      <!-- stape 1 -->
+      <div class="toast-container m-2 bottom-0" style="width: 250px">
+        <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header justify-content-between">
+            <i class="bi bi-lightbulb-fill">
+              <strong class="me-auto"> Tips !</strong>
+            </i>
+            <button type="button" class="btn-close"></button>
+          </div>
+          <div class="toast-body text-dark">
+            <p> 
+              Please
+              <a href="/login" class="text-info fw-bold text-decoration-none"> 
+                Log-in
+              </a>
               to use the app !
-          </p>
-        <% } else { %>
-          <% if (lessons && lessons.length > 0) { %>
-            <% if (selectedLesson) { %>
-              <% if (notesFull && notesFull.length >= 1 && notesFull.length < 6) { %>
-                <p class="showright250"> <!-- stape 5 -->
+            </p>
+          </div>
+        </div>
+      </div>
+    <% } else { %>
+      <% if (lessons && lessons.length > 0) { %>
+        <% if (selectedLesson) { %>
+          <% if (notesFull && notesFull.length >= 1 && notesFull.length < 6) { %>
+          <!-- stape 5 -->
+          <div class="toast-container p-3">
+            <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header justify-content-between">
+                <i class="bi bi-lightbulb-fill">
+                  <strong class="me-auto"> Tips !</strong>
+                </i>
+                <button type="button" class="btn-close"></button>
+              </div>
+              <div class="toast-body">
+                <p class="text-dark">
                   Take a quiz after 6 notes added !
                 </p>
-              <% } else if (notesFull.length < 1) { %>
-                <p class="showright250"> <!-- stape 4 -->
+              </div>
+            </div>
+          </div>
+          <% } else if (notesFull.length < 1) { %>
+          <!-- stape 4 -->
+          <div class="toast-container p-3">
+            <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header justify-content-between">
+                <i class="bi bi-lightbulb-fill">
+                  <strong class="me-auto"> Tips !</strong>
+                </i>
+                <button type="button" class="btn-close"></button>
+              </div>
+              <div class="toast-body">
+                <p class="text-dark">
                   Write a new note
                   <span 
                     class="text-success fw-bold text-decoration-none cursor-link"  
@@ -33,70 +63,121 @@
                     Here
                   </span> !
                 </p>
-              <% } else if (notesFull.length > 5) { %>
-                <% if (tenQuizzes.length === 0) { %>
-                  <p class="showright250"> <!-- stape 6 -->
+              </div>
+            </div>
+          </div>
+          <% } else if (notesFull.length > 5) { %>
+            <% if (tenQuizzes.length === 0) { %>
+            <!-- stape 6 -->
+            <div class="toast-container m-2 bottom-0" style="width: 250px">
+              <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header justify-content-between">
+                  <i class="bi bi-lightbulb-fill">
+                    <strong class="me-auto"> Tips !</strong>
+                  </i>
+                  <button id="toast-1" type="button" class="btn-close"></button>
+                </div>
+                <div class="toast-body">
+                  <p class="text-dark">
                     You can start a quiz
-                      <a  
-                        href="/quiz" 
-                        class="text-primary fw-bold text-decoration-none"
-                      >
-                        Here 
-                      </a>
-                    !
-                  </p>
-                <% } else if (tenQuizzes.length === 1) { %>
-                  <p class="showright250"> <!-- stape 7 -->
-                    Great ! Congrats for your first quiz !
-                  </p>
-                <% } else if (tenQuizzes.length > 1) { %>
-                  <p class="showright250"> <!-- stape 8 -->
-                    Discover your 10 last quizzes 
                     <a  
-                      href="/review" 
-                      class="text-primary-light fw-bold text-decoration-none" 
+                      href="/quiz" 
+                      class="text-primary fw-bold text-decoration-none"
                     >
-                      Here
+                      Here 
                     </a>
                     !
                   </p>
-                <% } %>
-              <% } %>
-            <% } else { %>
-              <p class="showright250"> <!-- stape 3 -->
-                Select the lesson  !
-              </p>
+                </div>
+              </div>
+            </div>
+            <% } else if (tenQuizzes.length === 1) { %>
+            <!-- stape 7 -->
+            <div class="toast-container p-3">
+              <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header justify-content-between">
+                  <i class="bi bi-lightbulb-fill">
+                    <strong class="me-auto"> Tips !</strong>
+                  </i>
+                  <button type="button" class="btn-close"></button>
+                </div>
+                <div class="toast-body">
+                  <p class="text-dark">
+                    Great ! Congrats for your first quiz !
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% } else if (tenQuizzes.length > 1) { %>
+            <!-- stape 8 -->
+            <div class="toast-container p-3">
+              <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header justify-content-between">
+                  <i class="bi bi-lightbulb-fill">
+                    <strong> Tips !</strong>
+                  </i>
+                  <button type="button" class="btn-close"></button>
+                </div>
+                <div class="toast-body">
+                  <p class="text-dark">
+                    Discover your 10 last quizzes 
+                    <a href="/review"  class="text-primary fw-bold text-decoration-none">Here</a>
+                    !
+                  </p>
+                </div>
+              </div>
+            </div>
             <% } %>
-          <% } else { %>
-            <!-- stape 2 -->
-            <p class="text-white showright250 ">
-              Add a new lesson  
-              <span 
-                class="text-info fw-bold text-decoration-none cursor-link" 
-                data-bs-toggle="modal" 
-                data-bs-target="#lessonModal"
-              >
-                Here
-              </span>
-              !
-            </p>
           <% } %>
+        <% } else { %>
+          <!-- stape 3 -->
+          <div class="toast-container">
+            <div id="liveToast" class="toast d-block" >
+              <div class="toast-header justify-content-between" >
+                <i class="bi bi-lightbulb-fill"></i>
+                <strong class="me-auto">Tips!</strong>
+                <button type="button" class="btn-close"></button>
+              </div>
+              <div class="toast-body" >
+                <p class="text-dark">Select the lesson!</p>
+              </div>
+            </div>
+          </div>
+          
         <% } %>
-      </div>
-    </div>
-    <!-- Block 2 (Right) -->
-      <% if (!tips || tips !== "d-none") { %>
-        <form action="/tips" method="POST" class="text-white" style="margin-top:3px">
-          <input name="status" value="d-none" type="hidden"/>
-          <button 
-            type="submit" 
-            class="btn text-warning p-0 me-2 showright"
-            style="margin-top: -7px;"
-            onmouseenter="handleMouseEnter(event)"
-          >
-            <i class="bi bi-x-circle-fill "></i>
-          </button>
-        </form>
+      <% } else { %>
+        <!-- stape 2 -->
+        <div class="toast-container p-3" >
+          <div id="liveToast" class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header justify-content-between">
+              <i class="bi bi-lightbulb-fill">
+                <strong class="me-auto"> Tips !</strong>
+              </i>
+              <button type="button" class="btn-close"></button>
+            </div>
+            <div class="toast-body">
+              <p class="text-dark">
+                Add a new lesson  
+                <span 
+                  class="text-info fw-bold text-decoration-none cursor-link" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#lessonModal"
+                >
+                  Here
+                </span>
+                !
+              </p>
+            </div>
+          </div>
+        </div>
       <% } %>
+    <% } %>
+  </div>
+  <!-- Block 2 hidde tips -->
+  <% if (!tips || tips !== "d-none") { %>
+    <form id="tipsForm" action="/tips" method="POST">
+      <input name="status" value="d-none" type="hidden"/>
+    </form>
+  <% } %>
   </div>
 </nav>

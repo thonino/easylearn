@@ -1,3 +1,12 @@
+// Tips toggle submit
+const closeButtons = document.querySelectorAll('.btn-close');
+closeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    var form = document.getElementById('tipsForm');
+    if (form) {  form.submit();  }
+  });
+});
+
 // Toggle InputEmail
 document.addEventListener("DOMContentLoaded", function () {
   var showInputEmail = document.getElementById("showInputEmail");
