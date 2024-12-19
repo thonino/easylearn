@@ -66,7 +66,7 @@
           <div class="modal-header text-info-dark  fs-4 p-0 ms-3">
             <p class="modal-title ">New Lesson</p>
             <button 
-              class="btn-close me-2 showright" 
+              class="btn-close me-2" 
               type="button" 
               data-bs-dismiss="modal" 
               aria-label="Close">
@@ -185,37 +185,5 @@
     </div>
   </div>
 <% } %>
-<script>
-
-// addNote/AddMore : AJAX
-let addMore = document.getElementById("addMore");
-addMore.addEventListener("click", async (e) => {
-  e.preventDefault(); 
-  let noteForm = document.getElementById("addNote");
-  let formData = new FormData(noteForm);
-  try {
-    const response = await fetch('/addnote', {
-      method: "POST",
-      body: formData,
-    });
-    if (response.ok) {
-      let noteModal = new bootstrap.Modal(document.getElementById('noteModal'));
-      let faceA = document.getElementById("faceA");
-      let faceB = document.getElementById("faceB");
-      faceA.value = "";
-      faceB.value = "";
-      
-      noteModal.show();
-      
-    } else { console.log("Submit form error"); }
-  } catch (error) {  console.error("Erreur :", error);  }
-});
-// let closeModalButton = document.getElementById("closeModalButton");
-// closeModalButton.addEventListener("click", () => { 
-//   location.reload(); 
-//   console.log("close btn modal");
-// });
-
-</script>
 
 

@@ -37,6 +37,37 @@ checkTarget.addEventListener("change", async () => {
   } catch (error) {  console.error('Network error:', error); }
 });
 
+// addNote/AddMore : AJAX
+let addMore = document.getElementById("addMore");
+addMore.addEventListener("click", async (e) => {
+  e.preventDefault(); 
+  let noteForm = document.getElementById("addNote");
+  let formData = new FormData(noteForm);
+  try {
+    const response = await fetch('/addnote', {
+      method: "POST",
+      body: formData,
+    });
+    if (response.ok) {
+      let noteModal = new bootstrap.Modal(document.getElementById('noteModal'));
+      let faceA = document.getElementById("faceA");
+      let faceB = document.getElementById("faceB");
+      faceA.value = "";
+      faceB.value = "";
+      
+      noteModal.show();
+      
+    } else { console.log("Submit form error"); }
+  } catch (error) {  console.error("Erreur :", error);  }
+});
+// closeModalButton
+let closeModalButton = document.getElementById("closeModalButton");
+closeModalButton.addEventListener("click", () => { 
+  location.reload(); 
+  console.log("close btn modal");
+});
+
+
 // Toggle InputEmail
 document.addEventListener("DOMContentLoaded", function () {
   var showInputEmail = document.getElementById("showInputEmail");
