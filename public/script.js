@@ -9,9 +9,9 @@ let toastOptions = { autohide: true, delay: 10000 };
 let toast = new bootstrap.Toast(toastEl, toastOptions);
 setTimeout(() => { 
   toast.show(); 
-}, 1500);
+}, 750);
 
-// Tips client
+// Tips : AJAX
 let checkTarget = document.getElementById("flexSwitchCheckChecked");
 checkTarget.addEventListener("change", async () => {
   const formData = new FormData(document.getElementById("tipsForm"));
@@ -28,25 +28,13 @@ checkTarget.addEventListener("change", async () => {
         setTimeout(() => {
           navTips.classList.remove("d-none");
           navTips.classList.add("d-block");
-        }, 1500);
+        }, 750);
       } else { 
         navTips.classList.remove("d-block");
         navTips.classList.add("d-none");
       }
     } else { console.error('Submission failed:', response.status);  } 
   } catch (error) {  console.error('Network error:', error); }
-});
-
-
-
-
-// Tips toggle submit
-const closeButtons = document.querySelectorAll('.btn-close');
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    var form = document.getElementById('tipsForm');
-    if (form) {  form.submit();  }
-  });
 });
 
 // Toggle InputEmail
@@ -232,6 +220,7 @@ ScrollReveal().reveal('.showleftslow', {
   interval: 150,
 });
 
+// bounce animation
 const handleMouseEnter = (event) => {
   const element = event.currentTarget;
   if (!element.classList.contains('start-bounce')) {

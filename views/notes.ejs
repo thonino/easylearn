@@ -15,7 +15,7 @@
         <span class="text-info-dark text-capitalize me-2">
           <% if (selectedLesson) { %>  <%= selectedLesson %>  <% } %>  !
         </span>
-          <button id="toggle1" class="btn btn-secondary btn-sm showleft mb-2">
+          <button id="toggle1" class="btn btn-secondary btn-sm mb-2">
             <i class="bi bi-gear-fill"></i>
           </button>
       </h1>
@@ -39,7 +39,7 @@
             </form>
           </div>
           <!-- Search  style="width: 140px" -->
-          <div class="d-flex justify-content-center gap-2 mt-2 showleft">
+          <div class="d-flex justify-content-center gap-2 mt-2 ">
             <form method="GET" name="search" action="/notes" class="d-flex">
               <input 
                 type="text" 
@@ -191,7 +191,7 @@
         <% for(let i = 1; i <= totalPages; i++) { %>
           <li class="page-item <%= currentPage === i ? 'active' : '' %>">
             <a 
-              class="page-link showleft rounded-0 " 
+              class="page-link rounded-0 " 
               href="/notes?page=<%= i %>&limit=<%= limit %><%= filter ? '&categoryFilter=' + filter : '' %>">
               <%= i %>
             </a>

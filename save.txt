@@ -1,3 +1,4 @@
+<!-- tips -->
 <form id="tipsForm" class="d-flex justify-content-center align-items-center" action="/tips" method="POST">
   <div class="form-check form-switch fs-5 ft-roboto fw-bold d-flex gap-2">
     <input 
@@ -19,7 +20,7 @@
         <div class="toast-header justify-content-between bg-warning">
           <i class="bi bi-lightbulb-fill"></i>
           <strong> Tips ! </strong>
-          <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+          <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
         </div>
         <div class="toast-body bg-light">
           <p> 
@@ -43,11 +44,11 @@
           <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
           <div class="toast-body bg-light">
             <p class="text-dark">
-              Take a test after 6 notes added !
+              Take a quiz after 6 notes added !
             </p>
           </div>
         </div>
@@ -59,7 +60,7 @@
           <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
           <div class="toast-body bg-light">
             <p class="text-dark">
@@ -83,13 +84,13 @@
             <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
             <div class="toast-body bg-light">
               <p class="text-dark">
-                You can start a test
+                You can start a quiz
                 <a  
-                  href="/test" 
+                  href="/quiz" 
                   class="text-warning fw-bold text-decoration-none"
                 >
                   Here 
@@ -106,10 +107,10 @@
             <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
             <div class="toast-body bg-light">
-              <p class="text-dark"> Great ! Congrats for your first test ! </p>
+              <p class="text-dark"> Great ! Congrats for your first quiz ! </p>
             </div>
           </div>
         </div>
@@ -120,11 +121,11 @@
             <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
             <div class="toast-body bg-light">
               <p class="text-dark">
-                Discover your 10 last tests 
+                Discover your 10 last quizzes 
                 <a href="/review"  class="text-warning fw-bold text-decoration-none">Here</a>
                 !
               </p>
@@ -140,7 +141,7 @@
           <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
           <div class="toast-body bg-light">
             <p class="text-dark">Select the lesson !</p>
@@ -155,7 +156,7 @@
           <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button> 
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
           <div class="toast-body bg-light">
             <p class="text-dark">

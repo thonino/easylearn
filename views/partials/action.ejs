@@ -55,9 +55,7 @@
       <% } %>
     </div>
   </nav>
-  
-  
-  
+
 <% } %>  
 <% if (user ) { %>
   <!-- Lesson Modal -->
@@ -98,20 +96,21 @@
     </div>
   <!-- Modal New Note-->
   <div class="modal fade" id="noteModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog ">
       <div class="modal-content">
         <i class="bi bi-plus-lg text-center text-success-dark fs-1"></i>
         <div class="modal-header text-success-dark fs-4 p-0 ms-3">
           <p class="modal-title ">New Note</p>
           <button 
-            class="btn-close me-2" 
+            id="closeModalButton"
             type="button" 
-            data-bs-dismiss="modal" 
+            data-bs-dismiss="modal"
+            class="btn-close me-2" 
             aria-label="Close">
           </button>
         </div>
         <div class="modal-body">
-          <form action="/addnote" method="POST">
+          <form id="addNote" action="/addnote" method="POST">
             <div class="mb-3">
               <label 
                 for="back" 
@@ -119,7 +118,7 @@
               >
                 Face A
               </label>
-              <input type="text" class="form-control" name="back" placeholder="write face a...">
+              <input id="faceA" type="text" class="form-control" name="back" placeholder="write face a...">
             </div>
             <div class="mb-3">
               <label 
@@ -128,7 +127,7 @@
               >
                 Face B
               </label>
-              <input type="text" class="form-control" name="front" placeholder="write face b...">
+              <input id="faceB" type="text" class="form-control" name="front" placeholder="write face b...">
             </div>
             <div class="mb-3">
               <label 
@@ -172,14 +171,14 @@
             <button type="submit" class="btn bg-success-dark text-light mt-2">
               Add
             </button>
-            <button 
+            <div 
+              id="addMore"
               type="submit" 
               name="action" 
-              value="addMore"
-              class="btn bg-success-dark text-light mt-2"
+              class="btn bg-success text-light mt-2"
             >
               Add More
-            </button>
+            </div>
           </form>
         </div>
       </div>
@@ -187,12 +186,36 @@
   </div>
 <% } %>
 <script>
-  // Vérifier si le paramètre modal=open est dans l'URL
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('modal') === 'open') { 
-    var noteModal = new bootstrap.Modal(document.getElementById('noteModal'));
-    noteModal.show();
-  }
+
+// addNote/AddMore : AJAX
+let addMore = document.getElementById("addMore");
+addMore.addEventListener("click", async (e) => {
+  e.preventDefault(); 
+  let noteForm = document.getElementById("addNote");
+  let formData = new FormData(noteForm);
+  try {
+    const response = await fetch('/addnote', {
+      method: "POST",
+      body: formData,
+    });
+    if (response.ok) {
+      let noteModal = new bootstrap.Modal(document.getElementById('noteModal'));
+      let faceA = document.getElementById("faceA");
+      let faceB = document.getElementById("faceB");
+      faceA.value = "";
+      faceB.value = "";
+      
+      noteModal.show();
+      
+    } else { console.log("Submit form error"); }
+  } catch (error) {  console.error("Erreur :", error);  }
+});
+// let closeModalButton = document.getElementById("closeModalButton");
+// closeModalButton.addEventListener("click", () => { 
+//   location.reload(); 
+//   console.log("close btn modal");
+// });
+
 </script>
 
 

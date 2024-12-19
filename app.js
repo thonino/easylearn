@@ -91,7 +91,7 @@ const makeAvailable = async (req, res, next) => {
     res.locals.quizzes = quizzes;
     res.locals.tenQuizzes = tenQuizzes;
     res.locals.selectedLesson = selectedLesson;
-    res.locals.tips = tips;
+    res.locals.tips = tips ;
     next();
   } catch (err) {
     console.error("Erreur lors de la récupération des thèmes et de l'utilisateur :", err);
@@ -441,7 +441,7 @@ app.post("/notes", async (req, res) => {
 });
 
 // POST ADD NOTE AND CATEGORY
-app.post("/addnote", async function (req, res) {
+app.post("/addnote", upload.none(), async function (req, res) {
   let newCategoryName = req.body.selectedCategory;
   if (newCategoryName === "newCat") {
     newCategoryName = req.body.newCategory;
