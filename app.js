@@ -1,11 +1,13 @@
-// 
-//
 // express & express-session
 require("dotenv").config();
 const express = require('express');
 const session = require('express-session');
 const path = require("path");
 const app = express();
+
+// multer
+const multer = require('multer');
+const upload = multer();
 
 // Bcrypt et crypto
 const bcrypt = require('bcrypt');
@@ -129,8 +131,6 @@ app.use((req, res, next) => {
 
 //---------------------------------ROOTS---------------------------------//
 
-
-
 // Session selected lesson
 app.post('/selectLesson', (req, res) => {
   const selectedLesson = req.body.lesson;
@@ -143,23 +143,11 @@ app.post('/selectLesson', (req, res) => {
   res.redirect(`/notes`); 
 });
 
-// Tips
-// app.post('/tips', (req, res) => {
-//   let tips = req.body.status;
-//   if (!tips || tips !== "d-none") { tips = ""; } 
-//   else { tips = "d-none"; }
-//   req.session.tips = tips;
-//   const referer = req.get('Referer');
-//   res.redirect(referer);
-// });
-
-app.post('/tips', (req, res) => {
-  const tips = req.body.flexSwitchCheckChecked; 
-  req.session.tips = tips;
-  console.log(`Tips status: ${tips}`);
+// Tips server
+app.post('/tips', upload.none(), (req, res) => {
+  req.session.tips = req.body.checkedInput;
   res.sendStatus(200); 
 });
-
 
 
 // INDEX
@@ -173,7 +161,7 @@ app.get("/", async (req, res) => {
       caterogies: res.locals.caterogies,
       selectedLesson: res.locals.selectedLesson,
       quizzes: res.locals.quiz,
-      tips: res.locals.tips,
+      tips: res.locals.tips, 
     });
   } 
   catch (err) {
@@ -181,6 +169,8 @@ app.get("/", async (req, res) => {
     res.render("error", { message: "Error rendering index" });
   }
 });
+
+
 
 // ACCOUNT
 app.get("/account", (req, res) => {
@@ -244,7 +234,10 @@ app.delete("/account/delete/:id", async (req, res) => {
 
 // GET REGISTER
 app.get('/register', (req, res) => {
-  res.render("registerForm", {user: res.locals.user});
+  res.render("registerForm", {
+    user: res.locals.user,
+    tips: res.locals.tips, 
+  });
 });
 
 // POST REGISTER
@@ -263,7 +256,10 @@ const userData = new User({
 
 // GET LOGIN
 app.get('/login', (req, res) => {
-  res.render("loginForm", { user: res.locals.user });
+  res.render("loginForm", { 
+    user: res.locals.user, 
+    tips: res.locals.tips,  
+  });
 });
 
 // POST LOGIN
@@ -394,6 +390,7 @@ app.get("/notes", async (req, res) => {
       notes: paginatedNotes,
       currentPage: page,
       currentPath: '/notes',
+      tips: res.locals.tips,
       notesFull, filter, search, quizzes, totalPages, limit
     });
   } catch (err) {
@@ -434,6 +431,7 @@ app.post("/notes", async (req, res) => {
       notes: paginatedNotes,
       currentPage: page,
       currentPath: '/notes',
+      tips: res.locals.tips,
       notesFull, filter, search, quizzes, totalPages, limit
     });
   } catch (err) {
@@ -471,6 +469,7 @@ app.post("/addnote", async function (req, res) {
       back: req.body.back,
       example: req.body.example,
       categoryName: newCategoryName,
+      tips: res.locals.tips,
       lessonName,
       userId,
     });
@@ -602,6 +601,7 @@ app.get("/test", async (req, res) => {
       notes: res.locals.notes,
       categories: categoriesFilter,
       selectedLesson: selectedLesson,
+      tips: res.locals.tips,
       currentPath: '/test',
     });
   } catch (err) {
@@ -640,6 +640,7 @@ app.get("/quiz/:category", async (req, res) => {
       selectedCategory: selectedCategory,
       selectedLesson: res.locals.selectedLesson,
       randomNotes: randomNotes,
+      tips: res.locals.tips,
     });
   } catch (err) {
     console.error("Error rendering quiz:", err);
@@ -743,6 +744,7 @@ app.get("/review", async (req, res) => {
       currentPath: '/review',
       showQuiz, prize, color, tenQuizzes, skip, 
       totalQuizzes: tenQuizzes.length, average,
+      tips: res.locals.tips,
     });
   } catch (err) {
     console.error("Error rendering quiz: ", err);
@@ -758,7 +760,7 @@ app.get("/error", (req, res) => {
 // GET ALERT
 app.get("/alert", (req, res) => {
   const message =  req.query.message;
-  res.render("alert", { message });
+  res.render("alert", { message,  });
 });
 
 // cmd windows-> tape : ipconfig -> ipv4 : 192.168.0.206:5000

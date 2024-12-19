@@ -11,18 +11,34 @@ setTimeout(() => {
   toast.show(); 
 }, 1500);
 
+// Tips client
 let checkTarget = document.getElementById("flexSwitchCheckChecked");
-checkTarget.addEventListener("change", () => {
-  let form = document.getElementById("tipsForm");
-  fetch(form.action, {
-    method: "POST",
-    body: new FormData(form),
-  })
-  .then(response => {
-    if (response.ok) { console.log("Form submitted successfully!"); } 
-    else { console.error("Error submitting form"); }
-  });
+checkTarget.addEventListener("change", async () => {
+  const formData = new FormData(document.getElementById("tipsForm"));
+  formData.set('checkedInput', checkTarget.checked ? "checked" : "");
+  try {
+    const response = await fetch('/tips', { 
+      method: 'POST', 
+      body: formData 
+    });
+    if (response.ok) { 
+      let navTips = document.getElementById("navTips");
+      const checkedInputValue = formData.get('checkedInput'); 
+      if (checkedInputValue === "checked") {
+        setTimeout(() => {
+          navTips.classList.remove("d-none");
+          navTips.classList.add("d-block");
+        }, 1500);
+      } else { 
+        navTips.classList.remove("d-block");
+        navTips.classList.add("d-none");
+      }
+    } else { console.error('Submission failed:', response.status);  } 
+  } catch (error) {  console.error('Network error:', error); }
 });
+
+
+
 
 // Tips toggle submit
 const closeButtons = document.querySelectorAll('.btn-close');

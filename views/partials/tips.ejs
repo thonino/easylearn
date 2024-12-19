@@ -1,26 +1,30 @@
-<nav class="<%= tips %>">
-  <% if (!tips || tips !== "d-none") { %>
-  <form id="tipsForm" class="d-flex justify-content-center align-items-center" action="/tips" method="POST">
-    <div class="form-check form-switch fs-5 ft-roboto fw-bold d-flex gap-2">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-      <label class="form-check-label" for="flexSwitchCheckChecked">Tips</label>
-    </div>
-  </form>
-  <% } %>
+<form id="tipsForm" class="d-flex justify-content-center align-items-center" action="/tips" method="POST">
+  <div class="form-check form-switch fs-5 ft-roboto fw-bold d-flex gap-2">
+    <input 
+      id="flexSwitchCheckChecked" 
+      class="form-check-input" 
+      type="checkbox" 
+      name="checkedInput"
+      <%= tips %> 
+    />
+    <label class="form-check-label" for="flexSwitchCheckChecked">Tips</label>
+  </div>
+</form>
+<nav id="navTips" class="<%= tips == "checked" ? "d-block" : "d-none" %>">
   <!-- user connected -->
   <% if (!user) { %>
     <!-- stape 1 -->
-    <div class="toast-container position-fixed bottom-0 end-0 m-2">
+    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
       <div class="toast" role="alert">
-        <div class="toast-header justify-content-between bg-secondary-light">
+        <div class="toast-header justify-content-between bg-warning">
           <i class="bi bi-lightbulb-fill"></i>
           <strong> Tips ! </strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
         </div>
-        <div class="toast-body bg-light ">
+        <div class="toast-body bg-light">
           <p> 
             Please
-            <a href="/login" class="text-info fw-bold text-decoration-none"> 
+            <a href="/login" class="text-warning fw-bold text-decoration-none"> 
               Log-in
             </a>
             to use the app !
@@ -34,14 +38,14 @@
     <% if (selectedLesson) { %>
       <% if (notesFull && notesFull.length >= 1 && notesFull.length < 6) { %>
       <!-- stape 5 -->
-      <div class="toast-container position-fixed bottom-0 end-0 m-2">
+      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
         <div class="toast" role="alert">
-          <div class="toast-header justify-content-between bg-secondary-light">
+          <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
-          <div class="toast-body bg-light ">
+          <div class="toast-body bg-light">
             <p class="text-dark">
               Take a quiz after 6 notes added !
             </p>
@@ -50,18 +54,18 @@
       </div>
       <% } else if (notesFull.length < 1) { %>
       <!-- stape 4 -->
-      <div class="toast-container position-fixed bottom-0 end-0 m-2">
+      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
         <div class="toast" role="alert">
-          <div class="toast-header justify-content-between bg-secondary-light">
+          <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
-          <div class="toast-body bg-light ">
+          <div class="toast-body bg-light">
             <p class="text-dark">
               Write a new note
               <span 
-                class="text-success fw-bold text-decoration-none cursor-link"  
+                class="text-warning fw-bold text-decoration-none cursor-link"  
                 data-bs-toggle="modal" 
                 data-bs-target="#noteModal"
                 >
@@ -74,19 +78,19 @@
       <% } else if (notesFull.length > 5) { %>
         <% if (tenQuizzes.length === 0) { %>
         <!-- stape 6 -->
-        <div class="toast-container position-fixed bottom-0 end-0 m-2">
+        <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
           <div class="toast" role="alert">
-            <div class="toast-header justify-content-between bg-secondary-light">
+            <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
-            <div class="toast-body bg-light ">
+            <div class="toast-body bg-light">
               <p class="text-dark">
                 You can start a quiz
                 <a  
                   href="/quiz" 
-                  class="text-primary fw-bold text-decoration-none"
+                  class="text-warning fw-bold text-decoration-none"
                 >
                   Here 
                 </a>
@@ -97,43 +101,31 @@
         </div>
         <% } else if (tenQuizzes.length === 1) { %>
         <!-- stape 7 -->
-        <div class="toast-container position-fixed bottom-0 end-0 m-2">
+        <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
           <div class="toast" role="alert">
-            <div class="toast-header justify-content-between bg-secondary-light">
+            <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
-            <div class="toast-body bg-light ">
+            <div class="toast-body bg-light">
               <p class="text-dark"> Great ! Congrats for your first quiz ! </p>
             </div>
           </div>
         </div>
         <% } else if (tenQuizzes.length > 1) { %>
         <!-- stape 8 -->
-        <div class="toast-container p-3">
-          <div id="liveToast" class="toast d-block" >
-            <div class="toast-header justify-content-between">
-              <i class="bi bi-lightbulb-fill">
-                <strong> Tips !</strong>
-              </i>
-              <button type="button" class="btn-close"></button>
-            </div>
-            <div class="toast-body">
-            </div>
-          </div>
-        </div>
-        <div class="toast-container position-fixed bottom-0 end-0 m-2">
+        <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
           <div class="toast" role="alert">
-            <div class="toast-header justify-content-between bg-secondary-light">
+            <div class="toast-header justify-content-between bg-warning">
               <i class="bi bi-lightbulb-fill"></i>
               <strong> Tips ! </strong>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
             </div>
-            <div class="toast-body bg-light ">
+            <div class="toast-body bg-light">
               <p class="text-dark">
                 Discover your 10 last quizzes 
-                <a href="/review"  class="text-primary fw-bold text-decoration-none">Here</a>
+                <a href="/review"  class="text-warning fw-bold text-decoration-none">Here</a>
                 !
               </p>
             </div>
@@ -143,33 +135,33 @@
       <% } %>
     <% } else { %>
       <!-- stape 3 -->
-      <div class="toast-container position-fixed bottom-0 end-0 m-2">
+      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
         <div class="toast" role="alert">
-          <div class="toast-header justify-content-between bg-secondary-light">
+          <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
-          <div class="toast-body bg-light ">
-            <p class="text-dark">Select the lesson!</p>
+          <div class="toast-body bg-light">
+            <p class="text-dark">Select the lesson !</p>
           </div>
         </div>
       </div>
     <% } %>
     <% } else { %>
       <!-- stape 2 -->
-      <div class="toast-container position-fixed bottom-0 end-0 m-2">
+      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
         <div class="toast" role="alert">
-          <div class="toast-header justify-content-between bg-secondary-light">
+          <div class="toast-header justify-content-between bg-warning">
             <i class="bi bi-lightbulb-fill"></i>
             <strong> Tips ! </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <i class="bi bi-x-lg btn m-0 p-0" data-bs-dismiss="toast"></i> 
           </div>
-          <div class="toast-body bg-light ">
+          <div class="toast-body bg-light">
             <p class="text-dark">
               Add a new lesson  
               <span 
-                class="text-info fw-bold text-decoration-none cursor-link" 
+                class="text-warning fw-bold text-decoration-none cursor-link" 
                 data-bs-toggle="modal" 
                 data-bs-target="#lessonModal"
               >
